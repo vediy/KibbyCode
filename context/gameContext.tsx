@@ -28,7 +28,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] = useState<GameState>(defaultState);
     const [isResetting, setIsResetting] = useState(false);
 
-    // Save progress whenever state changes — but not if resetting
+    // Save progress whenever state changes
     useEffect(() => {
     if (!isResetting) {
         AsyncStorage.setItem("gameState", JSON.stringify(state));
@@ -48,7 +48,7 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  // Upgrade the city → next level
+  // Upgrade the city to next level
   const upgradeCity = () => {
     setState((prev) => ({
       ...prev,
